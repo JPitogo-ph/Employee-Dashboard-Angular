@@ -3,11 +3,9 @@
         <div class="flex justify-between">
             <span class="text-xl ">Employee Dashboard</span>
 
-            <ul class="hidden md:flex gap-x-6 ">
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
-                <li>Home</li>
+            <ul class="hidden md:flex gap-x-6">
+                <li routerLink="/home" class="cursor-pointer">Home</li>
+                <li routerLink="/employees" class="cursor-pointer">Employees</li>
             </ul>
 
             <!--Burger Menu-->
@@ -25,10 +23,8 @@
     @if(isToggled) {
         <div class="md:hidden w-full bg-blue-300">
             <ul class=" flex flex-col font-medium">
-                <li class="block py-2 px-3 hover:bg-blue-200 cursor-pointer text-white">Home</li>
-                <li class="block py-2 px-3 hover:bg-blue-200 cursor-pointer text-white">Home</li>
-                <li class="block py-2 px-3 hover:bg-blue-200 cursor-pointer text-white">Home</li>
-                <li class="block py-2 px-3 hover:bg-blue-200 cursor-pointer text-white">Home</li>
+                <li routerLink="/home" class="block py-2 px-3 hover:bg-blue-200 cursor-pointer text-white">Home</li>
+                <li routerLink="/employees" class="block py-2 px-3 hover:bg-blue-200 cursor-pointer text-white">Employees</li>
             </ul>
         </div>
     }
