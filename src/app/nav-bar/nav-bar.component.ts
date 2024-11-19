@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
+  isToggled: boolean = false;
 
+  toggleNavBar(): void {
+    this.isToggled = !this.isToggled;
+  }
 }
