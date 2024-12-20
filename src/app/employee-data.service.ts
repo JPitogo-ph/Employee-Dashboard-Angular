@@ -9,7 +9,7 @@ interface Employee {
   LastName: string,
   Email: string,
   PhoneNumber: string,
-  HireDate: string,
+  HireDate: Date,
   JobId: string,
   Salary: number,
   CommissionPct: number,
