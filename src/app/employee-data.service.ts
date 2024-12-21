@@ -2,20 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface Employee {
-  EmployeeId: string,
-  FirstName: string,
-  LastName: string,
-  Email: string,
-  PhoneNumber: string,
-  HireDate: Date,
-  JobId: string,
-  Salary: number,
-  CommissionPct: number,
-  ManagerId: number,
-  DepartmentId: number
-}
+import { Employee } from './models/employee.model';
 
 @Injectable({
   providedIn: 'root'

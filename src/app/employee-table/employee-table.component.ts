@@ -1,4 +1,6 @@
 import { Component, inject } from '@angular/core';
+import { Employee } from '../models/employee.model';
+
 
 @Component({
   selector: 'app-employee-table',
