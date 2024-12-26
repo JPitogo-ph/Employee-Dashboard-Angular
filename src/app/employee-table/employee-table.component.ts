@@ -11,6 +11,6 @@ import { toSignal } from '@angular/core/rxjs-interop'
   styleUrl: './employee-table.component.scss'
 })
 export class EmployeeTableComponent {
-  employeeService = inject(EmployeeDataService)
+  employeeService = inject(EmployeeDataService);
   employees = toSignal(this.employeeService.getEmployees(), {initialValue: []})
 }

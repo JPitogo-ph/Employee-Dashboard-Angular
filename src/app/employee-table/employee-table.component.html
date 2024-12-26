@@ -10,11 +10,23 @@
     <!--TODO: Dynamically build from object
         TODO: Implement Pagination-->
     <tbody>
-      <tr>
-        <td class="px-4 py-2 border-b">198</td>
-        <td class="px-4 py-2 border-b">O'Connel, Donald</td>
-        <td class="px-4 py-2 border-b">SH_CLERK</td>
-      </tr>
+
+      @if (!employees() || !employees().length) {
+        <tr>
+          <td>LOADING DATA...</td>
+        </tr>
+      }
+      @else {
+        @for (employee of employees(); track employee.employeeId) {
+          <tr>
+            <td class="px-4 py-2 border-b">{{ employee.employeeId}}</td>
+            <td class="px-4 py-2 border-b">{{ employee.lastName + ", " + employee.firstName }}</td>
+            <td class="px-4 py-2 border-b">{{ employee.jobId}}</td>
+          </tr>
+        }
+        
+      }
+      
     </tbody>
   </table>
   
