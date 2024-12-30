@@ -10,11 +10,11 @@ import { Employee } from './models/employee.model';
 export class EmployeeDataService {
   private apiUrl = environment.baseUrl + "/api/Employees";
 
-  private employeesCache =  new BehaviorSubject<Employee[] | null>(null);
+  private employeesCache =  new BehaviorSubject<Employee[] | []>([]);
 
   private http = inject(HttpClient);
 
-  getEmployees(): Observable<Employee[] | null> {
+  getEmployees(): Observable<Employee[]> {
      if (this.employeesCache.value === null) {
       this.http.get<Employee[]>(this.apiUrl).subscribe(
         (data) => {
@@ -26,7 +26,7 @@ export class EmployeeDataService {
      return this.employeesCache.asObservable(); //Return as an immutable observable
 }
 
-  getEmployeeById(id: string): Observable<Employee> | null {
+  getEmployeeById(id: string): Observable<Employee> | [] {
     const cachedEmployees = this.employeesCache.value;
     if (cachedEmployees) {
       const employee = cachedEmployees.find((emp) => {
@@ -39,6 +39,6 @@ export class EmployeeDataService {
         })
       }
     }
-    return null //Is this a good idea in this language?
+    return [] //I'm expecting this will never actually run in this specific project.
   }
 }
