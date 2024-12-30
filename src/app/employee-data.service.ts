@@ -26,7 +26,7 @@ export class EmployeeDataService {
      return this.employeesCache.asObservable(); //Return as an immutable observable
 }
 
-  getEmployeeById(id: string): Observable<Employee | []> {
+  getEmployeeById(id: string | null): Observable<Employee | []> {
     const cachedEmployees = this.employeesCache.value;
     if (cachedEmployees) {
       const employee = cachedEmployees.find((emp) => {
