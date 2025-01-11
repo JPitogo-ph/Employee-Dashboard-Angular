@@ -8,14 +8,14 @@ import { Employee } from './models/employee.model';
   providedIn: 'root'
 })
 export class EmployeeDataService {
-  private apiUrl = environment.baseUrl + "/api/Employees";
+  private apiUrl = environment.baseUrl + "/api/employees";
 
   private employeesCache =  new BehaviorSubject<Employee[] | []>([]);
 
   private http = inject(HttpClient);
 
   getEmployees(): Observable<Employee[]> {
-     if (this.employeesCache.value === null) {
+     if (this.employeesCache.value.length === 0) {
       this.http.get<Employee[]>(this.apiUrl).subscribe(
         (data) => {
           this.employeesCache.next(data);
