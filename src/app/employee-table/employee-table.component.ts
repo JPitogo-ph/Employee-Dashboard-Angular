@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { EmployeeDataService } from '../employee-data.service';
-import { toSignal } from '@angular/core/rxjs-interop'
 
 @Component({
   selector: 'app-employee-table',
@@ -12,5 +11,5 @@ import { toSignal } from '@angular/core/rxjs-interop'
 })
 export class EmployeeTableComponent {
   employeeService = inject(EmployeeDataService);
-  employees = toSignal(this.employeeService.getEmployees(), {initialValue: []})
+  employeeList = this.employeeService.employeeCacheAccess
 }

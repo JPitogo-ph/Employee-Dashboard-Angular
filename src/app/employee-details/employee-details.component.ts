@@ -1,8 +1,9 @@
-import { Component, OnInit, Signal, inject } from '@angular/core';
+import { Component, Input, OnInit, Signal, computed, inject, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmployeeDataService } from '../employee-data.service';
 import { Employee } from '../models/employee.model';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-employee-details',
@@ -12,14 +13,12 @@ import { toSignal } from '@angular/core/rxjs-interop';
   styleUrl: './employee-details.component.scss'
 })
 export class EmployeeDetailsComponent implements OnInit {
-  employeeId!: string | null;
-  employee!: Signal<Employee | []>;
-
-  route = inject(ActivatedRoute);
   service = inject(EmployeeDataService);
 
+  @Input('id') employeeId = '';  
+  employee = this.service.employeeDetails;
+
   ngOnInit(): void {
-    this.employeeId = this.route.snapshot.paramMap.get('id');
-    this.employee = toSignal(this.service.getEmployeeById(this.employeeId), {initialValue: []});
+    this.service.employeeId.set(this.employeeId);
   }
 }

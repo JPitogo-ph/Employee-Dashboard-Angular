@@ -11,13 +11,13 @@
         TODO: Implement Pagination-->
     <tbody>
 
-      @if (!employees() || !employees().length) {
+      @if (!employeeList()) {
         <tr>
           <td>LOADING DATA...</td>
         </tr>
       }
       @else {
-        @for (employee of employees(); track employee.employeeId) {
+        @for (employee of employeeList(); track employee.employeeId) {
           <tr>
             <td class="px-4 py-2 border-b">{{ employee.employeeId}}</td>
             <td class="px-4 py-2 border-b">{{ employee.lastName + ", " + employee.firstName }}</td>

@@ -1,1 +1,5 @@
 <p>employee-details works!</p>
+<h1>{{ employeeId }}</h1>
+@if (employee(); as employeeDetails) {
+    <p>{{ employeeDetails.firstName }}</p>
+}
