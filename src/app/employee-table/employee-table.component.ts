@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { Employee } from '../models/employee.model';
 import { EmployeeDataService } from '../employee-data.service';
 import { RouterLink } from '@angular/router';
 

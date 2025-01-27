@@ -1,6 +1,8 @@
+<button class="px-4 py-2 m-4 bg-blue-300 rounded text-white" (click)="previousPage()">PREVIOUS PAGE</button>
+
 @if (employeeDetails(); as employee) {
     
-    <div class="flex h-screen ">
+    <div class="flex h-8 ">
         <div class="m-auto border-2 border-blue-300 p-7 bg-blue-100">
             <h2 class="font-bold">Employee ID:</h2>
             <span>{{ employee.employeeId }}</span>

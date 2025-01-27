@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Signal, computed, inject, signal } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { EmployeeDataService } from '../employee-data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-employee-details',
@@ -10,12 +11,16 @@ import { EmployeeDataService } from '../employee-data.service';
 })
 export class EmployeeDetailsComponent implements OnInit {
   service = inject(EmployeeDataService);
-  
+  location = inject(Location)
 
   @Input('id') employeeId = '';  
   employeeDetails = this.service.employeeDetails;
 
   ngOnInit(): void {
     this.service.employeeId.set(this.employeeId);
+  }
+
+  previousPage(): void {
+    this.location.back()
   }
 }
