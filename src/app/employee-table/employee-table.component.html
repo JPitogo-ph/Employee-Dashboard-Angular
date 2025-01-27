@@ -18,10 +18,10 @@
       }
       @else {
         @for (employee of employeeList(); track employee.employeeId) {
-          <tr>
-            <td class="px-4 py-2 border-b">{{ employee.employeeId}}</td>
-            <td class="px-4 py-2 border-b">{{ employee.lastName + ", " + employee.firstName }}</td>
-            <td class="px-4 py-2 border-b">{{ employee.jobId}}</td>
+          <tr [routerLink] = "[employee.employeeId]" class="group cursor-pointer">
+            <td class="px-4 py-2 border-b group-hover:bg-blue-200 ">{{ employee.employeeId}}</td>
+            <td class="px-4 py-2 border-b group-hover:bg-blue-200">{{ employee.lastName + ", " + employee.firstName }}</td>
+            <td class="px-4 py-2 border-b group-hover:bg-blue-200">{{ employee.jobId}}</td>
           </tr>
         }
         

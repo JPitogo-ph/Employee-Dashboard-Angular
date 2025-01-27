@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { Employee } from '../models/employee.model';
 import { EmployeeDataService } from '../employee-data.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-employee-table',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './employee-table.component.html',
   styleUrl: './employee-table.component.scss'
 })

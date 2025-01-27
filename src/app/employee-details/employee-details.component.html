@@ -1,5 +1,45 @@
-<p>employee-details works!</p>
-<h1>{{ employeeId }}</h1>
-@if (employee(); as employeeDetails) {
-    <p>{{ employeeDetails.firstName }}</p>
+@if (employeeDetails(); as employee) {
+    
+    <div class="flex h-screen ">
+        <div class="m-auto border-2 border-blue-300 p-7 bg-blue-100">
+            <h2 class="font-bold">Employee ID:</h2>
+            <span>{{ employee.employeeId }}</span>
+
+            <h2 class="font-bold">First Name:</h2>
+            <span>{{ employee.firstName }}</span>
+
+            <h2 class="font-bold">Last Name:</h2>
+            <span>{{ employee.lastName }}</span>
+            
+            <h2 class="font-bold">Email:</h2>
+            <span>{{ employee.email }}</span>
+            
+            <h2 class="font-bold">Phone Number:</h2>
+            <span>{{ employee.phoneNumber }}</span>
+            
+            <h2 class="font-bold">Hire Date:</h2>
+            <span>{{ employee.hireDate }}</span>
+            
+            <h2 class="font-bold">Job ID:</h2>
+            <span>{{ employee.jobId }}</span>
+
+            <h2 class="font-bold">Salary:</h2>
+            <span>{{ employee.salary }}</span>
+
+            <h2 class="font-bold">Commission Percentage:</h2>
+            <span>{{ employee.commissionPct }}</span>
+            
+            <h2 class="font-bold">Manager ID:</h2>
+            <span>{{ employee.managerId }}</span>
+
+            <h2 class="font-bold">Department ID:</h2>
+            <span>{{ employee.departmentId }}</span>
+
+        </div>
+    </div>
+
+}
+
+@else {
+    <h2>LOADING DATA</h2>
 }
