@@ -36,29 +36,6 @@ export class EmployeeDataService {
     )
   }
 
-//   getEmployees(): Observable<Employee[]> {
-//      if (this.employeesCache$.value.length === 0) {
-//       this.http.get<Employee[]>(this.apiUrl).subscribe(
-//         (data) => {
-//           this.employeesCache$.next(data);
-//         }
-//       )
-//      }
-
-//      return this.employeesCache$.asObservable(); //Return as an immutable observable
-// }
-
-//   getEmployeeById(id: string | null): Observable<Employee | null> {
-//     const cachedEmployees = this.employeesCache$.value;
-//     if (cachedEmployees) {
-//       const employee = cachedEmployees.find((emp) => emp.employeeId === id);
-//       if (employee) {
-//         return of(employee)
-//         }
-//       }
-//     return of(null) //I'm expecting this will never actually run in this specific project.
-//   }
-
   //Data from employee-details, this is set from that component
   employeeId = signal<string>('Report this if you see it')
 
