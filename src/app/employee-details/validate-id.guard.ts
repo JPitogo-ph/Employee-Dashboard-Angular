@@ -1,6 +1,6 @@
 import { computed, inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { EmployeeDataService } from './employee-data.service';
+import { EmployeeDataService } from '../employee-data.service';
 
 export const validateIdGuard: CanActivateFn = (route) => {
   const service = inject(EmployeeDataService);
