@@ -1,9 +1,17 @@
+<div>
+  <button class="px-4 py-2 m-2 bg-blue-300 rounded text-white">
+    Add New
+  </button>
+</div>
+
 <table class="min-w-full table-auto border-collapse p-4">
     <thead>
       <tr>
         <th class="px-4 py-2 border-b text-left">Employee Id</th>
         <th class="px-4 py-2 border-b text-left">Name</th>
         <th class="px-4 py-2 border-b text-left">Job Id</th>
+        <th class="px-4 py-2 border-b text-left">Edit Data</th>
+        <th class="px-4 py-2 border-b text-left">Delete</th>
       </tr>
     </thead>
 
@@ -19,9 +27,19 @@
       @else {
         @for (employee of employeeList(); track employee.employeeId) {
           <tr [routerLink] = "[employee.employeeId]" class="group cursor-pointer">
-            <td class="px-4 py-2 border-b group-hover:bg-blue-200 ">{{ employee.employeeId}}</td>
+            <td class="px-4 py-2 border-b group-hover:bg-blue-200 ">{{ employee.employeeId }}</td>
             <td class="px-4 py-2 border-b group-hover:bg-blue-200">{{ employee.lastName + ", " + employee.firstName }}</td>
-            <td class="px-4 py-2 border-b group-hover:bg-blue-200">{{ employee.jobId}}</td>
+            <td class="px-4 py-2 border-b group-hover:bg-blue-200">{{ employee.jobId }}</td>
+            <td class="px-4 py-2 border-b group-hover:bg-blue-200">
+              <button class="px-4 py-2 bg-blue-300 rounded text-white">
+                Edit
+              </button>
+            </td>
+            <td class="px-4 py-2 border-b group-hover:bg-blue-200">
+              <button class="px-4 py-2 bg-blue-300 rounded text-white">
+                Delete
+              </button>
+            </td>
           </tr>
         }
         

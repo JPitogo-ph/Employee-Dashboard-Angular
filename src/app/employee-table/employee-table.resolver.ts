@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
-import { catchError, EMPTY, retry, throwError } from 'rxjs';
+import { catchError, retry, throwError } from 'rxjs';
 import { EmployeeDataService } from '../employee-data.service';
 import { HttpClient } from '@angular/common/http';
 import { Employee } from '../models/employee.model';
