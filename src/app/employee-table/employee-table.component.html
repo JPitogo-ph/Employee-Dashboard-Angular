@@ -19,7 +19,7 @@
         TODO: Implement Pagination-->
     <tbody>
 
-      @if (!employeeList()) {
+      @if (employeeList().length == 0) {
         <tr>
           <td>LOADING DATA...</td>
         </tr>
