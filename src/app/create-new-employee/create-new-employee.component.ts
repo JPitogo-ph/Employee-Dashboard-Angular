@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { EmployeeDataService } from '../employee-data.service';
 
 @Component({
   selector: 'app-create-new-employee',
@@ -10,6 +11,24 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 })
 export class CreateNewEmployeeComponent {
   private fb = inject(FormBuilder)
+  private data = inject(EmployeeDataService)
+
+  submitForm() {
+    if (this.newEmployeeForm.valid) {
+      const payload = this.newEmployeeForm.value
+      this.data.postData(payload).subscribe({
+        next: (response) => {
+          console.log("Successfully submitted data: ", response)
+        },
+        error: (err) => {
+          console.error(err)
+        }
+      })
+    }
+    else{
+      console.log("Form invalid")
+    }
+  }
 
   //This project is mainly a frontend learning experience. Take the easy way out and make sure backend always get's the right data (mostly).
   newEmployeeForm = this.fb.group({
