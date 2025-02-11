@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmployeeDataService } from '../employee-data.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-create-new-employee',
@@ -12,6 +13,7 @@ import { EmployeeDataService } from '../employee-data.service';
 export class CreateNewEmployeeComponent {
   private fb = inject(FormBuilder)
   private data = inject(EmployeeDataService)
+  private location = inject(Location)
 
   submitForm() {
     if (this.newEmployeeForm.valid) {
@@ -28,6 +30,10 @@ export class CreateNewEmployeeComponent {
     else{
       console.log("Form invalid")
     }
+  }
+
+  previousPage() {
+    this.location.back()
   }
 
   //This project is mainly a frontend learning experience. Take the easy way out and make sure backend always get's the right data (mostly).
