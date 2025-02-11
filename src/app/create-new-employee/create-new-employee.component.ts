@@ -18,7 +18,7 @@ export class CreateNewEmployeeComponent {
       const payload = this.newEmployeeForm.value
       this.data.postData(payload).subscribe({
         next: (response) => {
-          console.log("Successfully submitted data: ", response)
+          console.log("Submitted data: ", response)
         },
         error: (err) => {
           console.error(err)
