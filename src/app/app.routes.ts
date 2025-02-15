@@ -14,6 +14,6 @@ export const routes: Routes = [
     {path: 'employees', component: EmployeeTableComponent, resolve: {data: employeeTableResolver}},
     {path: 'employees/new', component: CreateNewEmployeeComponent},
     {path: 'employees/:id', component: EmployeeDetailsComponent, canActivate: [validateIdGuard]},
-    {path: 'employees/edit/:id', component: EditEmployeeComponent, canActivate: [validateIdGuard]},
+    {path: 'employees/edit/:id', component: EditEmployeeComponent},
     {path:'**', component:PageNotFoundComponent}
 ];
