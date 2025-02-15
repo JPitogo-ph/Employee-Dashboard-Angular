@@ -11,7 +11,7 @@ import { Location } from '@angular/common';
 })
 export class EmployeeDetailsComponent implements OnInit {
   service = inject(EmployeeDataService);
-  location = inject(Location)
+  location = inject(Location);
 
   @Input('id') employeeId = '';  
   employeeDetails = this.service.employeeDetails;
@@ -21,6 +21,6 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   previousPage(): void {
-    this.location.back()
+    this.location.back();
   }
 }
