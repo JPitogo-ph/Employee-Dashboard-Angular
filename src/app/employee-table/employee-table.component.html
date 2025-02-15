@@ -26,12 +26,12 @@
       }
       @else {
         @for (employee of employeeList(); track employee.employeeId) {
-          <tr [routerLink] = "[employee.employeeId]" class="group cursor-pointer">
+          <tr class="group cursor-pointer" (click)="onRowClick(employee.employeeId)">
             <td class="px-4 py-2 border-b group-hover:bg-blue-200 ">{{ employee.employeeId }}</td>
             <td class="px-4 py-2 border-b group-hover:bg-blue-200">{{ employee.lastName + ", " + employee.firstName }}</td>
             <td class="px-4 py-2 border-b group-hover:bg-blue-200">{{ employee.jobId }}</td>
             <td class="px-4 py-2 border-b group-hover:bg-blue-200">
-              <button class="px-4 py-2 bg-blue-300 rounded text-white">
+              <button class="px-4 py-2 bg-blue-300 rounded text-white" (click)="onEditClick($event ,employee.employeeId)">
                 Edit
               </button>
             </td>
