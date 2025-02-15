@@ -1,1 +1,142 @@
-<p>edit-employee works!</p>
+<div class="grid grid-cols-3 items-center w-full">
+    <button class="px-4 py-2 m-2 bg-blue-300 rounded text-white col-start-1 justify-self-start" (click)="previousPage()">
+        PREVIOUS PAGE
+      </button>
+    <h1 class="font-bold text-lg text-blue-500 p-4 col-span-1 text-center">Employee Info Update Form</h1>
+</div>
+    
+<div class="flex justify-center">
+    <div class="border border-blue-200 rounded shadow p-7 w-[18rem]">
+        <form [formGroup]="updateEmployeeForm" (ngSubmit)="submitForm()">
+            <div class="flex flex-col">
+                <label for="employeeId">Employee Id</label>
+                <input id="employeeId" formControlName="employeeId" type="text" class="border border-black bg-gray-300">
+                @if (updateEmployeeForm.controls.employeeId.invalid && updateEmployeeForm.controls.employeeId.touched) {
+                    <small class="text-red-600">Employee Id is required</small>
+                }
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="firstName">First Name</label>
+                <input id="firstName" formControlName="firstName" type="text" class="border border-black">
+                @if (updateEmployeeForm.controls.firstName.touched) {
+                    <div>
+                        @if (updateEmployeeForm.controls.firstName.errors?.['required']) {
+                            <small class="text-red-600">First Name is required</small>
+                        }
+                        @if (updateEmployeeForm.controls.firstName.errors?.['minlength']) {
+                            <small class="text-red-600">Minimum of 2 characters for First Name</small>
+                        }
+                        @if (updateEmployeeForm.controls.firstName.errors?.['maxlength']) {
+                            <small class="text-red-600">Maximum of 32 characters for First Name</small>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="lastName">Last Name</label>
+                <input id="lastName" formControlName="lastName" type="text" class="border border-black">
+                @if ( updateEmployeeForm.controls.lastName.invalid &&
+                (updateEmployeeForm.controls.lastName.touched || updateEmployeeForm.controls.lastName.dirty)) {
+                    <div>
+                        @if (updateEmployeeForm.controls.lastName.errors?.['required']) {
+                            <small class="text-red-600">Last Name is required</small>
+                        }
+                        @if (updateEmployeeForm.controls.lastName.errors?.['minlength']) {
+                            <small class="text-red-600">Minimum of 2 characters for Last Name</small>
+                        }
+                        @if (updateEmployeeForm.controls.lastName.errors?.['maxlength']) {
+                            <small class="text-red-600">Maximum of 16 characters for Last Name</small>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="email">Email</label>
+                <input id="email" formControlName="email" type="text" class="border border-black">
+                @if ( updateEmployeeForm.controls.email.invalid &&
+                (updateEmployeeForm.controls.email.touched || updateEmployeeForm.controls.email.dirty)) {
+                    <div>
+                        @if (updateEmployeeForm.controls.email.errors?.['required']) {
+                            <small class="text-red-600">Email is required</small>
+                        }
+                        @if (updateEmployeeForm.controls.email.errors?.['minlength']) {
+                            <small class="text-red-600">Minimum of 2 characters for Email</small>
+                        }
+                        @if (updateEmployeeForm.controls.email.errors?.['maxlength']) {
+                            <small class="text-red-600">Maximum of 32 characters for Email</small>
+                        }
+                        @if (updateEmployeeForm.controls.email.errors?.['email']) {
+                            <small class="text-red-600">Please input a valid email</small>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="phoneNumber">Phone Number</label>
+                <input id="phoneNumber" formControlName="phoneNumber" type="text" class="border border-black">
+                @if ( updateEmployeeForm.controls.phoneNumber.invalid &&
+                (updateEmployeeForm.controls.phoneNumber.touched || updateEmployeeForm.controls.phoneNumber.dirty)) {
+                    <div>
+                        @if (updateEmployeeForm.controls.phoneNumber.errors?.['minlength']) {
+                            <small class="text-red-600">Minimum of 4 characters for Phone Number</small>
+                        }
+                        @if (updateEmployeeForm.controls.phoneNumber.errors?.['maxlength']) {
+                            <small class="text-red-600">Maximum of 16 characters for Phone Number</small>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="hireDate">Hire Date</label>
+                <input id="hireDate" formControlName="hireDate" type="date" class="border border-black">
+                @if (updateEmployeeForm.controls.hireDate.invalid && updateEmployeeForm.controls.hireDate.touched) {
+                    <small class="text-red-600">Hire Date is required</small>
+                }
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="jobId">Job Id</label>
+                <input id="jobId" formControlName="jobId" type="text" class="border border-black">
+                @if ( updateEmployeeForm.controls.jobId.invalid &&
+                (updateEmployeeForm.controls.jobId.touched || updateEmployeeForm.controls.jobId.dirty)) {
+                    <div>
+                        @if (updateEmployeeForm.controls.jobId.errors?.['required']) {
+                            <small class="text-red-600">Job Id is required</small>
+                        }
+                        @if (updateEmployeeForm.controls.jobId.errors?.['minlength']) {
+                            <small class="text-red-600">Minimum of 4 characters for Job Id</small>
+                        }
+                        @if (updateEmployeeForm.controls.jobId.errors?.['maxlength']) {
+                            <small class="text-red-600">Maximum of 5 characters for Job Id</small>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="salary">Salary</label>
+                <input id="salary" formControlName="salary" type="text" class="border border-black">
+                @if (updateEmployeeForm.controls.salary.invalid && updateEmployeeForm.controls.salary.touched) {
+                    <small class="text-red-600">Salary is required</small>
+                }
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="commissionPct">Commission % (Optional)</label>
+                <input id="commissionPct" formControlName="commissionPct" type="text" class="border border-black">
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="managerId">Manager Id (Optional)</label>
+                <input id="managerId" formControlName="managerId" type="text" class="border border-black">
+            </div>
+            <div class="flex flex-col py-2">
+                <label for="departmentId">Department Id</label>
+                <input id="departmentId" formControlName="departmentId" type="text" class="border border-black">
+                @if (updateEmployeeForm.controls.departmentId.invalid && updateEmployeeForm.controls.departmentId.touched) {
+                    <small class="text-red-600">Department Id is required</small>
+                }
+            </div>
+            <button class="block m-auto rounded border bg-blue-300 border-blue-300 py-1 px-2 text-white hover:bg-blue-500
+            disabled:hover:bg-blue-300"
+            [disabled]="updateEmployeeForm.invalid"
+            >Submit</button>
+        </form>
+    </div>
+</div>
