@@ -4,7 +4,7 @@ import {
           BehaviorSubject, 
           catchError, 
           Observable,
-          of, 
+          of,
                             } from 'rxjs';
 import { Employee } from './models/employee.model';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -27,29 +27,44 @@ export class EmployeeDataService {
     })
   }
 
-  postData(payload: any): Observable<any> { //Can static typing this be a DTO?
+  postData(payload: any): Observable<any> {
     return this.http.post(this.apiUrl, payload).pipe(
       catchError((err) => {
         if (err.error instanceof Error) {
-          console.error("Error occured: ", err.error.message) //Client-side error
+          console.error("Error occured: ", err.error.message); //Client-side error
         }
         else {
-          console.error(`Server returned error ${err.status} with body: ${err.error}`) //Server side
+          console.error(`Server returned error ${err.status} with body: ${err.error}`); //Server side
         }
 
-        return of(err)
+        return of(err);
+      })
+    )
+  }
+
+  putData(payload: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${payload.employeeId}`, payload).pipe(
+      catchError((err) => {
+        if (err.error instanceof Error) {
+          console.error("Error occured: ", err.error.message); //Client-side error
+        }
+        else {
+          console.error(`Server returned error ${err.status} with body: ${err.error}`); //Server side
+        }
+
+        return of(err);
       })
     )
   }
 
   //Data from employee-details, this is set from that component
-  employeeId = signal<string>('Report this if you see it')
+  employeeId = signal<string>('Report this if you see it');
 
   // Public Signal APIs for this service.
   employeeCacheAccess = toSignal(this.employeeCacheAccess$, {initialValue: [] as Employee[]});
   employeeDetails = computed(() => {
     return this.employeeCacheAccess().find((employee) => {
-      return String(employee.employeeId) === this.employeeId()
+      return String(employee.employeeId) === this.employeeId();
     })
   })
   

@@ -1,4 +1,4 @@
-import { Component, computed, inject, Input, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { EmployeeDataService } from '../employee-data.service';
 import { Location } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -18,7 +18,6 @@ export class EditEmployeeComponent implements OnInit {
 
   @Input('id') employeeId = '';
   employeeDetails = this.service.employeeDetails;
-  hireDate = '2022-07-07'
 
   loadEmployeeData() {
     const emp = this.employeeDetails();
@@ -41,7 +40,19 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   submitForm() {
-    console.log()
+    if (this.updateEmployeeForm.valid) {
+      const payload = {
+        employeeId: this.updateEmployeeForm.controls.employeeId.value, //Keep the field disabled but include it in the payload
+        ...this.updateEmployeeForm.value
+      }
+      this.service.putData(payload).subscribe({
+        next: (res) => console.log('Success', res),
+        error: (err) => console.error('Error',err)
+      })
+    }
+    else {
+      console.log('Form Invalid')
+    }
   }
 
   previousPage() {
