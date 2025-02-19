@@ -20,11 +20,13 @@ export class CreateNewEmployeeComponent {
       const payload = this.newEmployeeForm.value
       this.data.postData(payload).subscribe({
         next: (response) => {
-          console.log("Submitted data: ", response)
+          console.log("Submitted data: ", response);
+          this.data.refreshData()
         },
         error: (err) => {
           console.error(err)
-        }
+        },
+        complete: () => this.location.back()
       })
     }
     else{
@@ -51,7 +53,7 @@ export class CreateNewEmployeeComponent {
     phoneNumber: ['', {
       validators: [Validators.minLength(4), Validators.maxLength(16)]
     }],
-    hireDate: [Date.now(), Validators.required],
+    hireDate: [this.numToDate(Date.now()), Validators.required],
     jobId: ['', {
       validators: [Validators.required, Validators.minLength(4), Validators.maxLength(5)]
     }],
@@ -60,4 +62,10 @@ export class CreateNewEmployeeComponent {
     managerId: [''],
     departmentId: ['', Validators.required],
   })
+
+  //Helper function to set default value of hireDate in form control
+  numToDate(currentDate: number) {
+    let formattedDate = new Date(currentDate).toISOString().split('T')[0]
+    return formattedDate
+  }
 }
