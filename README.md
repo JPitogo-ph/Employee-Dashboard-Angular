@@ -3,7 +3,7 @@ My very first frontend project ever.
 Please do not be too critical, it's a project that focuses more on learning new features rather than good design.
 ## Features
 * Uses signals for reactivity and rxjs only for asynchronous processing.
-* Supports CRUD operations against the associated ASP.NET backend.
+* Supports CRUD operations and uses reactive forms.
 * Manually made UI components that may not look amazing, but were a very helpful css learning experience.
 * Uses HTTPS and CORS so you will need an SSL certificate to check it out.
 
