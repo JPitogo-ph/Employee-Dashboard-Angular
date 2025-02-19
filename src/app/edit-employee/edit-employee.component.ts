@@ -46,8 +46,12 @@ export class EditEmployeeComponent implements OnInit {
         ...this.updateEmployeeForm.value
       }
       this.service.putData(payload).subscribe({
-        next: (res) => console.log('Success', res),
-        error: (err) => console.error('Error',err)
+        next: (res) => {
+          console.log('Success', res);
+          this.service.refreshData()
+        },
+        error: (err) => console.error('Error',err),
+        complete: () => this.location.back()
       })
     }
     else {
