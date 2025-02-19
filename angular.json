@@ -79,8 +79,8 @@
           "defaultConfiguration": "development",
           "options": {
             "ssl": true,
-            "sslKey": "C:/Users/James/Documents/SSL Certificates/localhost-key.pem",
-            "sslCert": "C:/Users/James/Documents/SSL Certificates/localhost.pem"
+            "sslKey": "INSERT PATH TO YOUR SSL CERT HERE",
+            "sslCert": "INSERT PATH TO YOUR SSL CERT HERE"
           }
         },
         "extract-i18n": {
