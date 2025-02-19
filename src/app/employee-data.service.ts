@@ -5,6 +5,8 @@ import {
           catchError, 
           Observable,
           of,
+          retry,
+          throwError,
                             } from 'rxjs';
 import { Employee } from './models/employee.model';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -25,6 +27,19 @@ export class EmployeeDataService {
       next: (data) => this.employeesCache$.next(data),
       error: (err) => console.error("Final handler in service", err)
     })
+  }
+
+  refreshData() {
+    this.http.get<Employee[]>(this.apiUrl).pipe(
+        retry(5),
+        catchError((err) => {
+          console.error(err)
+          return throwError(() => new Error("Request failed after 3 retries"))
+        })
+      ).subscribe({
+        next: res => this.employeesCache$.next(res),
+        error: err => console.error('GET failed with body: ', err)
+      })
   }
 
   postData(payload: any): Observable<any> {
@@ -55,6 +70,10 @@ export class EmployeeDataService {
         return of(err);
       })
     )
+  }
+
+  deleteData(id: string): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`)
   }
 
   //Data from employee-details, this is set from that component
