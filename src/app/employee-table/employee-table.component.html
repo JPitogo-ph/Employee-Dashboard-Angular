@@ -36,7 +36,7 @@
               </button>
             </td>
             <td class="px-4 py-2 border-b group-hover:bg-blue-200">
-              <button class="px-4 py-2 bg-blue-300 rounded text-white">
+              <button class="px-4 py-2 bg-blue-300 rounded text-white" (click)="onDeleteClick($event, employee)">
                 Delete
               </button>
             </td>
@@ -47,4 +47,5 @@
       
     </tbody>
   </table>
-  
+
+  <app-modal [isVisible]="isModalOpen()" [employee]="selectedEmployee()" (closeModal)="closeModal($event)"></app-modal>
